@@ -6,8 +6,11 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 const userRoutes = require("./routes/users");
+const tripRoutes = require("./routes/trips");
+const path = require("path");
 
 const app = express();
+
 //middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -21,6 +24,8 @@ app.use(userRoutes);
 app.get("/users", (req, res) => {
   res.json(users);
 });
+app.use("/trips", tripRoutes);
+app.use("/media", express.static(path.join(__dirname, "media")));
 
 // error handling
 app.use((err, req, res, next) => {
