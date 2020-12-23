@@ -8,10 +8,8 @@ exports.signup = async (req, res, next) => {
   const saltRounds = 10;
   try {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log("exports.signup -> hashedPassword", hashedPassword);
     req.body.password = hashedPassword;
     const newUser = await User.create(req.body);
-    ////
     const payload = {
       id: newUser.id,
       username: newUser.username,
@@ -28,7 +26,6 @@ exports.signup = async (req, res, next) => {
   }
 };
 exports.signin = (req, res) => {
-  console.log("exports.signin -> req", req);
   const { user } = req;
   const payload = {
     id: user.id,

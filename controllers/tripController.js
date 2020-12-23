@@ -19,7 +19,7 @@ exports.tripList = async (req, res, next) => {
         {
           model: User,
           as: "user",
-          attributes: ["fname"],
+          attributes: ["firstName"],
         },
       ],
     });
