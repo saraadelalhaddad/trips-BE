@@ -12,10 +12,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    // call this firstName
     fname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    // lastName
     lname: {
       type: DataTypes.STRING,
       allowNull: false,

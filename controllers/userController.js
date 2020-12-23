@@ -8,10 +8,12 @@ exports.signup = async (req, res, next) => {
   const saltRounds = 10;
   try {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    // Remove these console logs once you test and know everything works
+    // before merging to main
     console.log("exports.signup -> hashedPassword", hashedPassword);
     req.body.password = hashedPassword;
     const newUser = await User.create(req.body);
-    ////
     const payload = {
       id: newUser.id,
       username: newUser.username,
@@ -28,6 +30,7 @@ exports.signup = async (req, res, next) => {
   }
 };
 exports.signin = (req, res) => {
+  // this console log too
   console.log("exports.signin -> req", req);
   const { user } = req;
   const payload = {
