@@ -14,7 +14,7 @@ exports.fetchTrip = async (tripId, next) => {
 exports.tripList = async (req, res, next) => {
   try {
     const trips = await Trip.findAll({
-      attributes: ["id", "title", "image", "slug"],
+      attributes: { exclude: ["createdAt", "updatedAt"] },
       include: [
         {
           model: User,
