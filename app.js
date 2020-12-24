@@ -21,6 +21,7 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 app.use(userRoutes);
 
+// Remove this route. Are you using it?
 app.get("/users", (req, res) => {
   res.json(users);
 });

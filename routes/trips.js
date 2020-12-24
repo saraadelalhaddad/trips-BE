@@ -12,6 +12,7 @@ const {
 
 // tripId from Param
 router.param("tripId", async (req, res, next, tripId) => {
+  // remove console logs
   console.log(`this is me ${tripId}`);
   const trip = await fetchTrip(tripId, next);
   if (trip) {
@@ -34,6 +35,7 @@ router.post(
   upload.single("image"),
   tripCreate
 );
+
 /* Update trip*/
 router.put(
   "/:tripId",

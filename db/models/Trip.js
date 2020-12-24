@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
   });
+
+  // We don't need a slug for the trip.
   SequelizeSlugify.slugifyModel(Trip, {
     source: ["title"],
   });

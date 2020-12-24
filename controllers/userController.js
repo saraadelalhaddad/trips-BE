@@ -27,6 +27,8 @@ exports.signup = async (req, res, next) => {
 };
 exports.signin = (req, res) => {
   const { user } = req;
+
+  // include the first name, last name, and email in this payload.
   const payload = {
     id: user.id,
     username: user.username,
