@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 const userRoutes = require("./routes/users");
 const tripRoutes = require("./routes/trips");
+const profileRoutes = require("./routes/profiles");
+const allusersRoutes = require("./routes/allusers");
 const path = require("path");
 
 const app = express();
@@ -26,6 +28,9 @@ app.get("/users", (req, res) => {
 });
 app.use("/trips", tripRoutes);
 app.use("/media", express.static(path.join(__dirname, "media")));
+
+app.use("/profiles", profileRoutes);
+app.use("/allusers", allusersRoutes);
 
 // error handling
 app.use((err, req, res, next) => {
