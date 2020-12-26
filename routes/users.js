@@ -9,4 +9,5 @@ router.post(
   passport.authenticate("local", { session: false }),
   signin
 );
+
 module.exports = router;

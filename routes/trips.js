@@ -42,7 +42,7 @@ router.put(
   tripUpdate
 );
 
-/* delete item*/
+/* delete trip*/
 router.delete(
   "/:tripId",
   passport.authenticate("jwt", { session: false }),

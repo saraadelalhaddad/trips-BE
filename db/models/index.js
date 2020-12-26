@@ -47,4 +47,9 @@ db.Sequelize = Sequelize;
 db.User.hasMany(db.Trip, { as: "trips", foreignKey: "userId" });
 db.Trip.belongsTo(db.User, { as: "user" });
 
+// one-to-one relation
+
+db.User.hasOne(db.Profile, { as: "user", foreignKey: "userId" });
+db.Profile.belongsTo(db.User, { as: "owner" });
+
 module.exports = db;
