@@ -39,6 +39,8 @@ exports.tripCreate = async (req, res, next) => {
 
     req.body.userId = req.user.id;
     const newTrip = await Trip.create(req.body);
+
+    newTrip.dataValues.user = { firstName: req.user.firstName };
     res.status(201).json(newTrip);
   } catch (err) {
     next(err);
