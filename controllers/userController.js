@@ -37,14 +37,38 @@ exports.signin = (req, res) => {
   res.json({ token });
 };
 
+//fetch a user
+exports.fetchUser = async (userId, next) => {
+  try {
+    const usera = await User.findByPk(userId);
+    return usera;
+  } catch (error) {
+    next(error);
+  }
+};
+
 /*get list of users*/
 exports.usersList = async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
-    console.log("Users", users);
+    //  console.log("Users", users);
     res.json(users);
+  } catch (err) {
+    next(err);
+  }
+};
+
+/* Update user*/
+exports.userUpdate = async (req, res, next) => {
+  try {
+    const usera = await User.findByPk(req.user.id);
+    // console.log("TCL: exports.userUpdate -> usera ", usera);
+
+    await usera.update(req.body);
+    console.log("TCL: exports.userUpdate -> req.body", req.body);
+    res.status(204).end();
   } catch (err) {
     next(err);
   }
